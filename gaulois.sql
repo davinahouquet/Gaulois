@@ -15,8 +15,14 @@ ORDER BY adresse_personnage DESC
 -- 3. Nom des personnages + spécialité + adresse et lieu d'habitation, triés par lieu puis par nom
 -- de personnage.
 
+SELECT nom_personnage, adresse_personnage, id_specialite
+FROM personnage
+ORDER BY adresse_personnage, nom_personnage
+
 -- 4. Nom des spécialités avec nombre de personnages par spécialité (trié par nombre de
 -- personnages décroissant).
+
+
 
 -- 5. Nom, date et lieu des batailles, classées de la plus récente à la plus ancienne (dates affichées
 -- au format jj/mm/aaaa).
