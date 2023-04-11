@@ -23,7 +23,10 @@ ORDER BY adresse_personnage, nom_personnage
 -- 4. Nom des spécialités avec nombre de personnages par spécialité (trié par nombre de
 -- personnages décroissant).
 
-
+SELECT id_specialite, COUNT(*)
+FROM personnage
+GROUP BY id_specialite
+ORDER BY COUNT(*) DESC
 
 -- 5. Nom, date et lieu des batailles, classées de la plus récente à la plus ancienne (dates affichées
 -- au format jj/mm/aaaa).
