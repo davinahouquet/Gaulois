@@ -36,6 +36,14 @@ FROM bataille
 ORDER BY date_bataille DESC
 
 -- 6. Nom des potions + coût de réalisation de la potion (trié par coût décroissant).
+----------------FAUX--------------------------------
+SELECT potion.nom_potion, ingredient.cout_ingredient
+	FROM potion
+	JOIN ingredient
+		ON cout_ingredient
+----------------FAUX--------------------------------
+
+
 
 --7. Nom des ingrédients + coût + quantité de chaque ingrédient qui composent la potion 'Santé'
 
