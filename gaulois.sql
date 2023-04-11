@@ -8,9 +8,10 @@ WHERE nom_bataille LIKE '%um'
 
 -- 2. Nombre de personnages par lieu
 
-SELECT adresse_personnage, id_personnage
+SELECT adresse_personnage, COUNT(*)
 FROM personnage
-ORDER BY adresse_personnage DESC
+GROUP BY adresse_personnage
+ORDER BY COUNT(*) DESC
 
 -- 3. Nom des personnages + spécialité + adresse et lieu d'habitation, triés par lieu puis par nom
 -- de personnage.
