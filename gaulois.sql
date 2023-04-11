@@ -31,6 +31,10 @@ ORDER BY COUNT(*) DESC
 -- 5. Nom, date et lieu des batailles, classées de la plus récente à la plus ancienne (dates affichées
 -- au format jj/mm/aaaa).
 
+SELECT *, DATE_FORMAT(date_bataille,'%d-%m-%Y')
+FROM bataille
+ORDER BY date_bataille DESC
+
 -- 6. Nom des potions + coût de réalisation de la potion (trié par coût décroissant).
 
 --7. Nom des ingrédients + coût + quantité de chaque ingrédient qui composent la potion 'Santé'
