@@ -156,3 +156,15 @@ INNER JOIN personnage
 WHERE boire.dose_boire = 0;
 
 -- 15. Nom du / des personnages qui n'ont pas le droit de boire de la potion 'Magique'.
+
+SELECT personnage.nom_personnage AS 'Potion interdite pour :'
+FROM personnage
+WHERE personnage.nom_personnage NOT IN (
+	SELECT personnage.nom_personnage AS 'Potion autorisée pour:'
+	FROM personnage
+	INNER JOIN autoriser_boire
+	ON autoriser_boire.id_personnage = personnage.id_personnage
+	INNER JOIN potion
+	ON autoriser_boire.id_potion = potion.id_potion
+	WHERE potion.id_potion = 1
+	)
