@@ -172,14 +172,16 @@ WHERE personnage.nom_personnage NOT IN (
 --En écrivant toujours des requêtes SQL, modifiez la base de données comme suit :
 -- A. Ajoutez le personnage suivant : Champdeblix, agriculteur résidant à la ferme Hantassion de Rotomagus.
 
---EXISTE DEJA--Ajout d'un nouveau personnage
+--(EXISTE DEJA--Ajout d'un nouveau personnage)
 
 INSERT INTO personnage (nom_personnage, adresse_personnage, id_lieu, id_specialite)
  VALUES ('PersonnageTest', 'AdresseTest', 1, 2)
 
 -- B. Autorisez Bonemine à boire de la potion magique, elle est jalouse d'Iélosubmarine...
 
---EXISTE DEJA--
+--EXISTE DEJA -> Interdire Pneumatix
+DELETE FROM autoriser_boire
+WHERE id_personnage = 17
 
 -- C Supprimez les casques grecs qui n'ont jamais été pris lors d'une bataille
 
