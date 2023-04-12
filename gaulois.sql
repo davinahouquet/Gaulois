@@ -103,7 +103,7 @@ GROUP BY personnage.nom_personnage
 
 
 -- Affiche les batailles + nombre de casques pris du plus grand au plus petit
-SELECT bataille.nom_bataille, MAX(prendre_casque.qte)
+SELECT bataille.nom_bataille AS 'Bataille', MAX(prendre_casque.qte) AS 'Quantité de casque pris'
 FROM prendre_casque
 INNER JOIN bataille
 ON prendre_casque.id_bataille = bataille.id_bataille
