@@ -172,7 +172,9 @@ WHERE personnage.nom_personnage NOT IN (
 --En écrivant toujours des requêtes SQL, modifiez la base de données comme suit :
 -- A. Ajoutez le personnage suivant : Champdeblix, agriculteur résidant à la ferme Hantassion de Rotomagus.
 
---EXISTE DEJA--
+--EXISTE DEJA--Ajout d'un nouveau personnage
+
+
 
 -- B. Autorisez Bonemine à boire de la potion magique, elle est jalouse d'Iélosubmarine...
 
@@ -180,8 +182,19 @@ WHERE personnage.nom_personnage NOT IN (
 
 -- C Supprimez les casques grecs qui n'ont jamais été pris lors d'une bataille
 
+DELETE FROM type_casque
+WHERE id_type_casque = 2 AND NOT IN (
 
-
+	SELECT type_casque.nom_type_casque AS 'Casques utilisés'
+	FROM type_casque
+	INNER JOIN casque
+	ON casque.id_type_casque = type_casque.id_type_casque
+	INNER JOIN prendre_casque
+	ON prendre_casque.id_casque = casque.id_casque
+	INNER JOIN bataille
+	ON bataille.id_bataille = prendre_casque.id_bataille
+	
+	)
 
 -- D. Modifiez l'adresse de Zérozérosix : il a été mis en prison à Condate.
 
@@ -205,5 +218,5 @@ WHERE composer.id_ingredient = 19;
 
 -- F. Obélix s'est trompé : ce sont 42 casques Weisenau, et non Ostrogoths, qu'il a pris lors de la bataille 'Attaque de la banque postale'. Corrigez son erreur !
 UPDATE prendre_casque
- SET id_casque = 10, qte = 42
+SET id_casque = 10, qte = 42
 WHERE id_bataille = 9
