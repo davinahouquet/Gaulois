@@ -174,7 +174,8 @@ WHERE personnage.nom_personnage NOT IN (
 
 --EXISTE DEJA--Ajout d'un nouveau personnage
 
-
+INSERT INTO personnage (nom_personnage, adresse_personnage, id_lieu, id_specialite)
+ VALUES ('PersonnageTest', 'AdresseTest', 1, 2)
 
 -- B. Autorisez Bonemine à boire de la potion magique, elle est jalouse d'Iélosubmarine...
 
