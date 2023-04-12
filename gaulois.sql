@@ -41,7 +41,7 @@ SELECT potion.nom_potion, ingredient.cout_ingredient
 	FROM potion
 	JOIN ingredient
 		ON cout_ingredient DESC
-----------------FAUX--------------------------------
+----------------------------------------------------
 
 SELECT potion.nom_potion, COUNT(composer.id_ingredient), SUM(ingredient.cout_ingredient*composer.qte) AS 'cout total'
 FROM potion
@@ -77,8 +77,9 @@ GROUP BY personnage.id_personnage
 
 -- 9. Nom des personnages et leur quantité de potion bue (en les classant du plus grand buveur
 -- au plus petit).
-----------------FAUX--------------------------------
 
+
+----------------FAUX--------------------------------
 SELECT personnage.nom_personnage, boire.id_potion, COUNT(boire.dose_boire) AS 'qte_bue'
 FROM boire
 INNER JOIN personnage 
@@ -86,7 +87,8 @@ ON boire.id_personnage = personnage.id_personnage
 INNER JOIN potion
 ON boire.id_potion = potion.id_potion
 GROUP BY personnage.nom_personnage
-----------------FAUX--------------------------------
+----------------------------------------------------
+
 
 SELECT personnage.nom_personnage, COUNT(boire.dose_boire) AS 'qte_bue'
 FROM boire
@@ -96,7 +98,9 @@ INNER JOIN potion
 ON boire.id_potion = potion.id_potion
 GROUP BY personnage.nom_personnage
 
+
 -- 10. Nom de la bataille où le nombre de casques pris a été le plus important.
+
 
 -- Affiche les batailles + nombre de casques pris du plus grand au plus petit
 SELECT bataille.nom_bataille, MAX(prendre_casque.qte)
@@ -105,8 +109,11 @@ INNER JOIN bataille
 ON prendre_casque.id_bataille = bataille.id_bataille
 GROUP BY bataille.nom_bataille
 
+
 -- 11. Combien existe-t-il de casques de chaque type et quel est leur coût total ? (classés par
 -- nombre décroissant)
+
+
 
 -- 12. Nom des potions dont un des ingrédients est le poisson frais.
 
