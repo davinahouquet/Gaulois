@@ -77,6 +77,24 @@ GROUP BY personnage.id_personnage
 
 -- 9. Nom des personnages et leur quantité de potion bue (en les classant du plus grand buveur
 -- au plus petit).
+----------------FAUX--------------------------------
+
+SELECT personnage.nom_personnage, boire.id_potion, COUNT(boire.dose_boire) AS 'qte_bue'
+FROM boire
+INNER JOIN personnage 
+ON boire.id_personnage = personnage.id_personnage
+INNER JOIN potion
+ON boire.id_potion = potion.id_potion
+GROUP BY personnage.nom_personnage
+----------------FAUX--------------------------------
+
+SELECT personnage.nom_personnage, COUNT(boire.dose_boire) AS 'qte_bue'
+FROM boire
+INNER JOIN personnage 
+ON boire.id_personnage = personnage.id_personnage
+INNER JOIN potion
+ON boire.id_potion = potion.id_potion
+GROUP BY personnage.nom_personnage
 
 -- 10. Nom de la bataille où le nombre de casques pris a été le plus important.
 
