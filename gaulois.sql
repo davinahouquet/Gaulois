@@ -129,6 +129,14 @@ INNER JOIN type_casque
 
 -- 12. Nom des potions dont un des ingrédients est le poisson frais.
 
+SELECT potion.nom_potion AS 'Nom de la potion', ingredient.nom_ingredient AS 'Ingrédient'
+FROM potion
+INNER JOIN ingredient
+ ON ingredient.id_ingredient = id_ingredient
+INNER JOIN composer
+ ON composer.id_potion = potion.id_potion
+ WHERE ingredient.id_ingredient = 24
+
 -- 13. Nom du / des lieu(x) possédant le plus d'habitants, en dehors du village gaulois.
 
 -- 14. Nom des personnages qui n'ont jamais bu aucune potion.
