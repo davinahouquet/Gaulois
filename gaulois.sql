@@ -185,14 +185,13 @@ WHERE personnage.nom_personnage NOT IN (
 
 -- D. Modifiez l'adresse de Zérozérosix : il a été mis en prison à Condate.
 
-
 UPDATE personnage
 SET adresse_personnage = 'nouvelle adresse'
 WHERE id_personnage = 23
 
-
 -- E. La potion 'Soupe' ne doit plus contenir de persil.
---Pour afficher qu'elle n'en contient pas
+
+--Pour afficher qu'elle en contient bien 
 SELECT potion.nom_potion, ingredient.nom_ingredient
 FROM potion
 INNER JOIN composer
@@ -200,4 +199,11 @@ ON composer.id_potion = potion.id_potion
 INNER JOIN ingredient
 ON composer.id_ingredient = ingredient.id_ingredient
 
+--Pour supprimer le persil de la potion 'Soupe'
+DELETE FROM composer
+WHERE composer.id_ingredient = 19;
+
 -- F. Obélix s'est trompé : ce sont 42 casques Weisenau, et non Ostrogoths, qu'il a pris lors de la bataille 'Attaque de la banque postale'. Corrigez son erreur !
+UPDATE prendre_casque
+ SET id_casque = 10, qte = 42
+WHERE id_bataille = 9
