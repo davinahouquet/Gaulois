@@ -180,14 +180,24 @@ WHERE personnage.nom_personnage NOT IN (
 
 -- C Supprimez les casques grecs qui n'ont jamais été pris lors d'une bataille
 
-UPDATE personnage
-SET adresse_personnage = 'nouvelle adresse'
-WHERE id_personnage = 23
+
+
 
 -- D. Modifiez l'adresse de Zérozérosix : il a été mis en prison à Condate.
 
 
--- E. La potion 'Soupe' ne doit plus contenir de persil.
+UPDATE personnage
+SET adresse_personnage = 'nouvelle adresse'
+WHERE id_personnage = 23
 
+
+-- E. La potion 'Soupe' ne doit plus contenir de persil.
+--Pour afficher qu'elle n'en contient pas
+SELECT potion.nom_potion, ingredient.nom_ingredient
+FROM potion
+INNER JOIN composer
+ON composer.id_potion = potion.id_potion
+INNER JOIN ingredient
+ON composer.id_ingredient = ingredient.id_ingredient
 
 -- F. Obélix s'est trompé : ce sont 42 casques Weisenau, et non Ostrogoths, qu'il a pris lors de la bataille 'Attaque de la banque postale'. Corrigez son erreur !
