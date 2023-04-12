@@ -98,6 +98,13 @@ GROUP BY personnage.nom_personnage
 
 -- 10. Nom de la bataille où le nombre de casques pris a été le plus important.
 
+-- Affiche les batailles + nombre de casques pris du plus grand au plus petit
+SELECT bataille.nom_bataille, MAX(prendre_casque.qte)
+FROM prendre_casque
+INNER JOIN bataille
+ON prendre_casque.id_bataille = bataille.id_bataille
+GROUP BY bataille.nom_bataille
+
 -- 11. Combien existe-t-il de casques de chaque type et quel est leur coût total ? (classés par
 -- nombre décroissant)
 
