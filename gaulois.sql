@@ -139,6 +139,14 @@ INNER JOIN composer
 
 -- 13. Nom du / des lieu(x) possédant le plus d'habitants, en dehors du village gaulois.
 
+SELECT lieu.nom_lieu AS 'Lieu', COUNT(personnage.adresse_personnage) AS 'Nombre habitants'
+FROM personnage
+INNER JOIN lieu
+ ON personnage.id_lieu = lieu.id_lieu
+ GROUP BY lieu.nom_lieu
+ ORDER BY COUNT(personnage.adresse_personnage) DESC
+LIMIT 1, 11;
+
 -- 14. Nom des personnages qui n'ont jamais bu aucune potion.
 
 -- 15. Nom du / des personnages qui n'ont pas le droit de boire de la potion 'Magique'.
