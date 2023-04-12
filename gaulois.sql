@@ -53,17 +53,27 @@ GROUP BY potion.id_potion
 
 --7. Nom des ingrédients + coût + quantité de chaque ingrédient qui composent la potion 'Santé'
 
-SELECT potion.nom_potion, COUNT(composer.id_ingredient), SUM(ingredient.cout_ingredient*composer.qte) AS 'cout total'
+SELECT potion.nom_potion, COUNT(composer.id_ingredient) AS 'Nombre ingredients', SUM(ingredient.cout_ingredient*composer.qte) AS 'cout total'
 FROM potion
 INNER JOIN composer
 ON composer.id_potion = potion.id_potion
 INNER JOIN ingredient
 ON composer.id_ingredient = ingredient.id_ingredient
 WHERE potion.id_potion = 3
+GROUP BY potion.id_potion
+
 
 
 -- 8. Nom du ou des personnages qui ont pris le plus de casques dans la bataille 'Bataille du village
 -- gaulois'
+SELECT personnage.nom_personnage, bataille.nom_bataille, COUNT(pc.qte)
+FROM prendre_casque AS pc
+INNER JOIN bataille
+ON pc.id_bataille = bataille.id_bataille
+INNER JOIN personnage
+ON pc.id_personnage = personnage.id_personnage
+WHERE pc.id_bataille = 1
+GROUP BY personnage.id_personnage DESC
 
 -- 9. Nom des personnages et leur quantité de potion bue (en les classant du plus grand buveur
 -- au plus petit).
