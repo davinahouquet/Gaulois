@@ -149,4 +149,10 @@ LIMIT 1, 11;
 
 -- 14. Nom des personnages qui n'ont jamais bu aucune potion.
 
+SELECT personnage.nom_personnage AS 'Nom personnage', boire.dose_boire AS 'Dose 0'
+FROM boire
+INNER JOIN personnage
+ ON boire.id_personnage = personnage.id_personnage
+WHERE boire.dose_boire = 0;
+
 -- 15. Nom du / des personnages qui n'ont pas le droit de boire de la potion 'Magique'.
