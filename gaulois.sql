@@ -89,7 +89,6 @@ ON boire.id_potion = potion.id_potion
 GROUP BY personnage.nom_personnage
 ----------------------------------------------------
 
-
 SELECT personnage.nom_personnage, COUNT(boire.dose_boire) AS 'qte_bue'
 FROM boire
 INNER JOIN personnage 
@@ -121,7 +120,12 @@ LIMIT 1
 -- 11. Combien existe-t-il de casques de chaque type et quel est leur coût total ? (classés par
 -- nombre décroissant)
 
-
+SELECT casque.id_type_casque AS 'Type de casque', COUNT(casque.id_casque) AS 'Nombre de casque', SUM(casque.cout_casque) AS 'Coût total'
+FROM casque
+INNER JOIN type_casque
+ ON type_casque.id_type_casque = casque.id_type_casque
+ GROUP BY casque.id_type_casque
+ ORDER BY COUNT(casque.id_type_casque) DESC
 
 -- 12. Nom des potions dont un des ingrédients est le poisson frais.
 
