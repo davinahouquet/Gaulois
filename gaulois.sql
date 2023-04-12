@@ -40,12 +40,27 @@ ORDER BY date_bataille DESC
 SELECT potion.nom_potion, ingredient.cout_ingredient
 	FROM potion
 	JOIN ingredient
-		ON cout_ingredient
+		ON cout_ingredient DESC
 ----------------FAUX--------------------------------
 
-
+SELECT potion.nom_potion, COUNT(composer.id_ingredient), SUM(ingredient.cout_ingredient*composer.qte) AS 'cout total'
+FROM potion
+INNER JOIN composer
+ON composer.id_potion = potion.id_potion
+INNER JOIN ingredient
+ON composer.id_ingredient = ingredient.id_ingredient
+GROUP BY potion.id_potion
 
 --7. Nom des ingrédients + coût + quantité de chaque ingrédient qui composent la potion 'Santé'
+
+SELECT potion.nom_potion, COUNT(composer.id_ingredient), SUM(ingredient.cout_ingredient*composer.qte) AS 'cout total'
+FROM potion
+INNER JOIN composer
+ON composer.id_potion = potion.id_potion
+INNER JOIN ingredient
+ON composer.id_ingredient = ingredient.id_ingredient
+WHERE potion.id_potion = 3
+
 
 -- 8. Nom du ou des personnages qui ont pris le plus de casques dans la bataille 'Bataille du village
 -- gaulois'
