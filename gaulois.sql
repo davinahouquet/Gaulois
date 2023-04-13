@@ -3,8 +3,8 @@
 -- 1. Nom des lieux qui finissent par 'um'
 
 SELECT *
-FROM bataille
-WHERE nom_bataille LIKE '%um'
+FROM lieu
+WHERE nom_lieu LIKE '%um'
 
 -- 2. Nombre de personnages par lieu
 
